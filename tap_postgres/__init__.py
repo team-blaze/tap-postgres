@@ -828,6 +828,10 @@ def main_impl():
         "emit_state_every_n_rows": int(args.config.get("emit_state_every_n_rows", 1000)),
         "debug_lsn": args.config.get("debug_lsn") == "true",
         "logical_poll_total_seconds": float(args.config.get("logical_poll_total_seconds", 0)),
+        "sslmode": args.config.get("sslmode"),
+        "sslrootcert": args.config.get("sslrootcert"),
+        "sslcert": args.config.get("sslcert"),
+        "sslkey": args.config.get("sslkey"),
     }
 
     LOGGER.setLevel(getattr(logging, args.config.get("loglevel", "INFO").upper(), logging.INFO))
