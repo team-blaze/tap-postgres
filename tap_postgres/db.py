@@ -57,6 +57,7 @@ def open_connection(conn_config, logical_replication=False):
     if logical_replication:
         cfg["connection_factory"] = psycopg2.extras.LogicalReplicationConnection
 
+    LOGGER.info("Trying to connect with config = %s", str(cfg))
     conn = psycopg2.connect(**cfg)
     LOGGER.info("Connected with sslmode = %s", conn.get_dsn_parameters().get("sslmode", "unknown"))
 
