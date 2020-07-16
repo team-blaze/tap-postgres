@@ -49,6 +49,10 @@ def open_connection(conn_config, logical_replication=False):
 
     if conn_config.get("sslmode"):
         cfg["sslmode"] = conn_config["sslmode"]
+        if cfg["sslmode"] == "verify-ca":
+            cfg["sslrootcert"] = conn_config.get("sslrootcert")
+            cfg["sslcert"] = conn_config.get("sslcert")
+            cfg["sslkey"] = conn_config.get("sslkey")
 
     if logical_replication:
         cfg["connection_factory"] = psycopg2.extras.LogicalReplicationConnection
